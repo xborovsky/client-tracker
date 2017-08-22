@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-sm-12 col-md-2">
+    <button type="button" class="btn btn-default" (click)="navigateToCreateNew();"><i class="fa fa-plus-square" aria-hidden="true"></i> Create new</button>
+  </div>
+  <div class="col-sm-12 col-md-10">
+    <table class="table tabl-striped">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Group name</th>
+          <th>Created</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!(groups | async)">
+          <td colspan="6" class="text-center">
+            <i class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+          </td>
+        </tr>
+        <tr *ngFor="let group of groups | async; let cnt = index">
+          <td>{{ cnt + 1 }}</td>
+          <td>{{ group.name }}</td>
+          <td>{{ group.created }}</td>
+          <td>
+            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit"></i>&nbsp;&nbsp;
+            <i class="fa fa-times icon-image" aria-hidden="true" title="Delete"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a [routerLink]="['/clients']">Clients</a></li>
+    <li>New</li>
+  </ul>
+  <h2>Create new client</h2>
+  <form novalidate class="form" [formGroup]="newClientForm" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <div class="form-group" [ngClass]="{'has-error': name.invalid && (name.dirty || name.touched)}">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" formControlName="name" required minlength="3" />
+      <div class="alert alert-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+        <p *ngIf="name.errors.required">Name is required</p>
+        <p *ngIf="name.errors.minlength">Name must be at least 3 characters long</p>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': surname.invalid && (surname.dirty || surname.touched)}">
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" class="form-control" formControlName="surname" required minlength="3" />
+      <div class="alert alert-danger" *ngIf="surname.errors && (surname.dirty || surname.touched)">
+        <p *ngIf="surname.errors.required">Surname is required</p>
+        <p *ngIf="surname.errors.minlength">Surname must be at least 3 characters long</p>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': title.invalid && (title.dirty || title.touched)}">
+      <label for="title">Title:</label>
+      <input type="text" id="title" class="form-control" formControlName="title" required minlength="3" />
+      <div class="alert alert-danger" *ngIf="title.errors && (title.dirty || title.touched)">
+        <p *ngIf="title.errors.required">Title is required</p>
+        <p *ngIf="title.errors.minlength">Title must be at least 3 characters long</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="spcialization">Specialization:</label>
+      <input type="text" id="specialization" class="form-control" formControlName="specialization" />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!newClientForm.valid">Submit</button>
+  </form>
+</div>

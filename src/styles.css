@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+i.icon-image {
+    cursor: pointer;
+    font-size: 12pt;
+}
+
+a.nocolor, a.nocolor:visited {
+    color:black;
+}

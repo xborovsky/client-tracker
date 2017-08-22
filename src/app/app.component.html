@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/welcome']">Client tracker</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li [routerLinkActive]="'active'"><a [routerLink]="['/clients']"><i class="fa fa-male" aria-hidden="true"></i> Clients</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="['/groups']"><i class="fa fa-users" aria-hidden="true"></i> Groups</a></li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

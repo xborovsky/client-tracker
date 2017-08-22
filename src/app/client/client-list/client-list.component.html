@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-sm-12 col-md-2">
+    <button type="button" class="btn btn-default" (click)="navigateToCreateNew();"><i class="fa fa-plus-square" aria-hidden="true"></i> Create new</button>
+  </div>
+  <div class="col-sm-12 col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Specialization</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!(clients | async)">
+          <td colspan="6" class="text-center">
+            <i class="fa fa-spinner fa-pulse fa-2x" aria-hidden="true"></i>
+          </td>
+        </tr>
+        <tr *ngFor="let client of clients | async; let cnt = index">
+          <td>{{ cnt+1 }}</td>
+          <td><a [routerLink]="['/clients', cnt]" class="nocolor"><i class="fa fa-search icon-image" aria-hidden="true" title="Detail"></i></a></td>
+          <td>{{ client.name }} {{ client.surname }}</td>
+          <td>{{ client.title|uppercase }}</td>
+          <td>{{ client.specialization }}</td>
+          <td>
+            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit"></i>&nbsp;&nbsp;
+            <i class="fa fa-times icon-image" aria-hidden="true" title="Delete"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
