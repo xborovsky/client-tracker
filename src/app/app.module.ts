@@ -14,6 +14,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ClientListComponent } from './client/client-list/client-list.component';
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { ClientCreateComponent } from './client/client-create/client-create.component';
+import { ClientEditComponent } from './client/client-edit/client-edit.component';
+import { ClientDetailResolve } from './client/client-detail.resolve.service';
+import { ClientService } from './client/client.service';
 
 import { GroupListComponent } from './group/group-list/group-list.component';
 import { GroupCreateComponent } from './group/group-create/group-create.component';
@@ -25,6 +28,7 @@ import { GroupCreateComponent } from './group/group-create/group-create.componen
     ClientListComponent,
     ClientDetailComponent,
     ClientCreateComponent,
+    ClientEditComponent,
     GroupListComponent,
     GroupCreateComponent
   ],
@@ -36,7 +40,7 @@ import { GroupCreateComponent } from './group/group-create/group-create.componen
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routesConfig)
   ],
-  providers: [AngularFireDatabase],
+  providers: [AngularFireDatabase, ClientDetailResolve, ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

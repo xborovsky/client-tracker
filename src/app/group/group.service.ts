@@ -11,12 +11,16 @@ export class GroupService {
 
   createGroup(group:Group):void {
     let ref = this.af.database.ref('groups');
-    ref.push({
+    let newRef = ref.push();
+    newRef.set({
+      id : newRef.key,
       name : group.getName(),
       create : group.getCreated()
     });
   }
 
-  deleteGroup():void {}
+  deleteGroup(id:String):void {
+    this.af.database.ref('groups/' + id).remove();
+  }
 
 }

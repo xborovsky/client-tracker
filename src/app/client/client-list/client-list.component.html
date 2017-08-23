@@ -22,13 +22,13 @@
         </tr>
         <tr *ngFor="let client of clients | async; let cnt = index">
           <td>{{ cnt+1 }}</td>
-          <td><a [routerLink]="['/clients', cnt]" class="nocolor"><i class="fa fa-search icon-image" aria-hidden="true" title="Detail"></i></a></td>
+          <td><a [routerLink]="['/clients', client.id]" class="nocolor"><i class="fa fa-search icon-image" aria-hidden="true" title="Detail"></i></a></td>
           <td>{{ client.name }} {{ client.surname }}</td>
           <td>{{ client.title|uppercase }}</td>
           <td>{{ client.specialization }}</td>
           <td>
-            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit"></i>&nbsp;&nbsp;
-            <i class="fa fa-times icon-image" aria-hidden="true" title="Delete"></i>
+            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit" (click)="navigateToEdit(client.id)"></i>&nbsp;&nbsp;
+            <i class="fa fa-times icon-image" aria-hidden="true" title="Delete" (click)="deleteClient(client.id)"></i>
           </td>
         </tr>
       </tbody>

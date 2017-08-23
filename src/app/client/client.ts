@@ -1,10 +1,14 @@
 export class Client {
     constructor(
+        private id:String,
         private name:String,
         private surname:String,
         private title:String,
         private specialization:String) {}
 
+    public getId():String {
+        return this.id;
+    }
     public getName():String {
         return this.name;
     }
@@ -20,10 +24,15 @@ export class Client {
 }
 
 export class ClientBuilder {
+    private id:String;
     private name:String;
     private surname:String;
     private title:String;
     private specialization:String;
+
+    public getId():String {
+        return this.id;
+    }
 
     public getName():String {
         return this.name;
@@ -39,6 +48,11 @@ export class ClientBuilder {
 
     public getSpecialization():String {
         return this.specialization;
+    }
+
+    public withId(id:String):ClientBuilder {
+        this.id = id;
+        return this;
     }
 
     public withName(name:String):ClientBuilder {
@@ -62,6 +76,6 @@ export class ClientBuilder {
     }
 
     public build():Client {
-        return new Client(this.name, this.surname, this.title, this.specialization);
+        return new Client(this.id, this.name, this.surname, this.title, this.specialization);
     }
 }

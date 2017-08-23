@@ -1,18 +1,31 @@
 <div class="container">
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Name:</th>
-        <td>{{ client.name }} {{ client.surname }}</td>
-      </tr>
-      <tr>
-        <th>Title:</th>
-        <td>{{ client.title | uppercase }}</td>
-      </tr>
-      <tr>
-        <th>Specialization</th>
-        <td>{{ client.specialization }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <ul class="breadcrumb">
+    <li><a [routerLink]="['/clients']">Clients</a></li>
+    <li>Detail</li>
+  </ul>
+  <h2>Client detail</h2>
+  <!--<div class="alert alert-danger" *ngIf="!contact">
+  </div>
+  <table class="table" *ngIf="contact">-->
+  <div class="col-sm-12 col-md-2">
+    <button type="button" class="btn btn-default" (click)="navigateToEdit();"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit client</button>
+  </div>
+  <div class="col-sm-12 col-md-10">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Full Name:</th>
+          <td>{{ client.name }} {{ client.surname }}</td>
+        </tr>
+        <tr>
+          <th>Title:</th>
+          <td>{{ client.title | uppercase }}</td>
+        </tr>
+        <tr>
+          <th>Specialization</th>
+          <td>{{ client.specialization }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
