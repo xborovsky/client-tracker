@@ -9,8 +9,10 @@ import { ClientEditComponent } from './client/client-edit/client-edit.component'
 
 import { GroupListComponent } from './group/group-list/group-list.component';
 import { GroupCreateComponent } from './group/group-create/group-create.component';
+import { GroupEditComponent } from './group/group-edit/group-edit.component';
 
-import {ClientDetailResolve} from './client/client-detail.resolve.service';
+import { ClientDetailResolve } from './client/client-detail.resolve.service';
+import { GroupDetailResolve } from './group/group-detail.resolve.service';
 
 export const routesConfig: Routes = [
   { path : '', redirectTo: 'welcome', pathMatch : 'full' },
@@ -20,5 +22,6 @@ export const routesConfig: Routes = [
   { path: 'clients/edit/:id', component: ClientEditComponent, resolve : { client :  ClientDetailResolve} },
   { path: 'groups', component : GroupListComponent },
   { path: 'groups/new', component : GroupCreateComponent },
+  { path: 'groups/edit/:id', component : GroupEditComponent, resolve : { group : GroupDetailResolve } },
   { path: 'welcome', component : WelcomeComponent }
 ];

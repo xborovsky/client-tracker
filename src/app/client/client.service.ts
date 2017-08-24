@@ -33,8 +33,13 @@ export class ClientService {
     this.af.database.ref('clients/' + id).remove();
   }
 
-  updateClient():Client {
-    return null;
+  updateClient(id:String, clientNew:Client):void {
+    this.af.database.ref('clients/' + id).update({
+      'name' : clientNew.getName(),
+      'surname' : clientNew.getSurname(),
+      'title' : clientNew.getTitle(),
+      'specialization' : clientNew.getSpecialization()}
+    );
   }
 
 }

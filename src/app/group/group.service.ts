@@ -9,6 +9,10 @@ export class GroupService {
 
   constructor(private af:AngularFireDatabase) { }
 
+  getGroup(id:String):any {
+    return this.af.database.ref('groups/' + id).once('value');
+  }
+
   createGroup(group:Group):void {
     let ref = this.af.database.ref('groups');
     let newRef = ref.push();
@@ -21,6 +25,10 @@ export class GroupService {
 
   deleteGroup(id:String):void {
     this.af.database.ref('groups/' + id).remove();
+  }
+
+  updateGroup(group:Group, newName:string):void {
+    this.af.database.ref('groups/' + group.getId()).update({'name' : newName});
   }
 
 }

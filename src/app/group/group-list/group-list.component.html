@@ -23,7 +23,7 @@
           <td>{{ group.name }}</td>
           <td>{{ group.created }}</td>
           <td>
-            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit"></i>&nbsp;&nbsp;
+            <i class="fa fa-pencil icon-image" aria-hidden="true" title="Edit" (click)="navigateToEdit(group.id)"></i>&nbsp;&nbsp;
             <i class="fa fa-times icon-image" aria-hidden="true" title="Delete" (click)="deleteGroup(group.id)"></i>
           </td>
         </tr>

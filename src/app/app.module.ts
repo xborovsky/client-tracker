@@ -20,6 +20,9 @@ import { ClientService } from './client/client.service';
 
 import { GroupListComponent } from './group/group-list/group-list.component';
 import { GroupCreateComponent } from './group/group-create/group-create.component';
+import { GroupEditComponent } from './group/group-edit/group-edit.component';
+import { GroupDetailResolve } from './group/group-detail.resolve.service';
+import { GroupService } from './group/group.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { GroupCreateComponent } from './group/group-create/group-create.componen
     ClientCreateComponent,
     ClientEditComponent,
     GroupListComponent,
-    GroupCreateComponent
+    GroupCreateComponent,
+    GroupEditComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import { GroupCreateComponent } from './group/group-create/group-create.componen
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routesConfig)
   ],
-  providers: [AngularFireDatabase, ClientDetailResolve, ClientService],
+  providers: [AngularFireDatabase, ClientDetailResolve, ClientService, GroupDetailResolve, GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

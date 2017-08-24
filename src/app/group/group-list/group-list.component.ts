@@ -7,8 +7,7 @@ import { GroupService } from '../group.service';
 @Component({
   selector: 'app-group-list',
   templateUrl: './group-list.component.html',
-  styleUrls: ['./group-list.component.css'],
-  providers: [GroupService]
+  styleUrls: ['./group-list.component.css']
 })
 export class GroupListComponent {
 
@@ -29,5 +28,9 @@ export class GroupListComponent {
     }
     return false;
   } 
+
+  navigateToEdit(id:string):void {
+    this.router.navigate(['groups/edit', id]);
+  }
 
 }
