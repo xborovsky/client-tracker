@@ -25,6 +25,10 @@
           <th>Specialization</th>
           <td>{{ client.specialization }}</td>
         </tr>
+        <tr *ngIf="group">
+          <th>Group</th>
+          <td>{{ group.name }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

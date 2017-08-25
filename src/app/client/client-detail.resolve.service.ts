@@ -21,6 +21,7 @@ export class ClientDetailResolve implements Resolve<Client> {
         .withSurname(client.val().surname)
         .withTitle(client.val().title)
         .withSpecialization(client.val().specialization)
+        .withGroupId(client.val().groupId)
         .build();
     });
   }

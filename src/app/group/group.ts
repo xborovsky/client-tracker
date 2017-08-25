@@ -1,11 +1,11 @@
 export class Group {
-    constructor(private id:String, private name:String, private created:Date) { }
+    constructor(private id:string, private name:string, private created:Date) { }
 
-    public getId():String {
+    public getId():string {
         return this.id;
     }
 
-    public getName():String {
+    public getName():string {
         return this.name;
     }
 

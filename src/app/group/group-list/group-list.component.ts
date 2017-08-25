@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { GroupService } from '../group.service';
@@ -13,8 +13,8 @@ export class GroupListComponent {
 
   groups:FirebaseListObservable<any[]>;
 
-  constructor(private af:AngularFireDatabase, private router:Router, private groupService:GroupService) {
-    this.groups = af.list("groups");
+  constructor(private router:Router, private groupService:GroupService) {
+    this.groups = groupService.getAllGroups();
   }
 
   navigateToCreateNew():void {

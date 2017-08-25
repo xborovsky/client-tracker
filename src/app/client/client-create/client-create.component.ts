@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { Client, ClientBuilder } from '../client';
 import { ClientService } from '../client.service';
+import { Group } from '../../group/group';
+import { GroupService } from '../../group/group.service';
 
 
 @Component({
@@ -19,13 +21,18 @@ export class ClientCreateComponent implements OnInit {
   private surname: FormControl;
   private title: FormControl;
   private specialization: FormControl;
+  private group: FormControl;
+  private allGroups:any[];
 
-  constructor(private router:Router, private clientService:ClientService) {
+  constructor(private router:Router, private clientService:ClientService, private groupService:GroupService) {
     this.newClient = new ClientBuilder().build();
   }
 
   ngOnInit() {
     this.createForm();
+    this.groupService.getAllGroups().subscribe(groups => {
+      this.allGroups = groups;
+    });
   }
 
   private createForm():void {
@@ -33,11 +40,13 @@ export class ClientCreateComponent implements OnInit {
     this.surname = new FormControl('', Validators.required);
     this.title = new FormControl('', Validators.required);
     this.specialization = new FormControl('');
+    this.group = new FormControl('', Validators.required);
     this.newClientForm = new FormGroup({
       name: this.name,
       surname: this.surname,
       title: this.title,
-      specialization: this.specialization
+      specialization: this.specialization,
+      group: this.group
     });
   }
 
@@ -49,6 +58,7 @@ export class ClientCreateComponent implements OnInit {
           .withSurname(formValues.surname)
           .withTitle(formValues.title)
           .withSpecialization(formValues.specialization)
+          .withGroupId(formValues.group)
           .build()
       );
       this.newClientForm.reset();

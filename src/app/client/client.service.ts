@@ -25,7 +25,8 @@ export class ClientService {
       name : client.getName(),
       surname : client.getSurname(),
       title : client.getTitle(),
-      specialization : client.getSpecialization()
+      specialization : client.getSpecialization(),
+      groupId : client.getGroupId()
     });
   }
 
@@ -33,13 +34,14 @@ export class ClientService {
     this.af.database.ref('clients/' + id).remove();
   }
 
-  updateClient(id:String, clientNew:Client):void {
+  updateClient(id:string, clientNew:Client):void {
     this.af.database.ref('clients/' + id).update({
       'name' : clientNew.getName(),
       'surname' : clientNew.getSurname(),
       'title' : clientNew.getTitle(),
-      'specialization' : clientNew.getSpecialization()}
-    );
+      'specialization' : clientNew.getSpecialization(),
+      'groupId' : clientNew.getGroupId()
+    });
   }
 
 }

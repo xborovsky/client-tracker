@@ -33,6 +33,15 @@
       <label for="spcialization">Specialization:</label>
       <input type="text" id="specialization" class="form-control" formControlName="specialization" />
     </div>
+    <div class="form-group" [ngClass]="{'has-error': group.invalid && (group.dirty || group.touched)}">
+      <label for="group">Group:</label>
+      <select id="group" class="form-control" formControlName="group" required>
+        <option *ngFor="let g of allGroups" [value]="g.id" [selected]="g.id===client.groupId">{{ g.name }}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="group.errors && (group.dirty || group.touched)">
+        <p *ngIf="group.errors.required">Group is required</p>
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary" [disabled]="!editClientForm.valid">Submit</button>
   </form>
 </div>

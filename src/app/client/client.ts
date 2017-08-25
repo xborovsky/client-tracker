@@ -1,81 +1,74 @@
 export class Client {
     constructor(
-        private id:String,
-        private name:String,
-        private surname:String,
-        private title:String,
-        private specialization:String) {}
+        private id:string,
+        private name:string,
+        private surname:string,
+        private title:string,
+        private specialization:string,
+        private groupId:string) {}
 
-    public getId():String {
+    public getId():string {
         return this.id;
     }
-    public getName():String {
+    public getName():string {
         return this.name;
     }
-    public getSurname():String {
+    public getSurname():string {
         return this.surname;
     }
-    public getTitle():String {
+    public getTitle():string {
         return this.title;
     }
-    public getSpecialization():String {
+    public getSpecialization():string {
         return this.specialization;
+    }
+    public getGroupId():string {
+        return this.groupId;
     }
 }
 
 export class ClientBuilder {
-    private id:String;
-    private name:String;
-    private surname:String;
-    private title:String;
-    private specialization:String;
+    private id:string;
+    private name:string;
+    private surname:string;
+    private title:string;
+    private specialization:string;
+    private groupId:string;
 
-    public getId():String {
-        return this.id;
-    }
-
-    public getName():String {
-        return this.name;
-    }
-
-    public getSurname():String {
-        return this.surname;
-    }
-
-    public getTitle():String {
-        return this.title;
-    }
-
-    public getSpecialization():String {
-        return this.specialization;
-    }
-
-    public withId(id:String):ClientBuilder {
+    public withId(id:string):ClientBuilder {
         this.id = id;
         return this;
     }
 
-    public withName(name:String):ClientBuilder {
+    public withName(name:string):ClientBuilder {
         this.name = name;
         return this;
     }
     
-    public withSurname(surname:String):ClientBuilder {
+    public withSurname(surname:string):ClientBuilder {
         this.surname = surname;
         return this;
     }
 
-    public withTitle(title:String):ClientBuilder {
+    public withTitle(title:string):ClientBuilder {
         this.title = title;
         return this;
     }
 
-    public withSpecialization(specialization:String):ClientBuilder {
+    public withSpecialization(specialization:string):ClientBuilder {
         this.specialization = specialization;
         return this;
     }
 
+    public withGroupId(groupId:string):ClientBuilder {
+        this.groupId = groupId;
+        return this;
+    }
+
     public build():Client {
-        return new Client(this.id, this.name, this.surname, this.title, this.specialization);
+        return new Client(
+            this.id, this.name, this.surname,
+            this.title, this.specialization, this.groupId
+        );
     }
 }
